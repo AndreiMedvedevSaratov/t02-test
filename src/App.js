@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
+import MapComponent from './components/MapComponent/MapComponent';
+
 import { Layout } from 'antd';
 
 import 'antd/dist/antd.min.css';
@@ -71,7 +73,7 @@ function App() {
 
 				</div>
 
-				{/* <MapComponent /> */}
+				<MapComponent />
 
 			</Content>
 
