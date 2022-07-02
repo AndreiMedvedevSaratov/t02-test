@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 import MapComponent from './components/MapComponent/MapComponent';
+import TableWithRequests from './components/TableWithRequests/TableWithRequests';
 
 import { Layout } from 'antd';
 
@@ -63,8 +64,7 @@ function App() {
 					ref={requestsTableWrapper}
 					style={wrapperSize}
 				>
-					{/* <TableWithRequests> */}
-
+					<TableWithRequests />
 					<button
 						id="drag-pointer"
 						type="button"

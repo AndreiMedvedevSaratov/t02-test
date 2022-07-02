@@ -1,9 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import mapComponentReducer from '../components/MapComponent/mapComponentSlice';
+import mapComponentReducer from './mapComponentSlice';
+import requestsReducer from './requestListSlice';
+import destinationsSlice from '../components/TableWithRequests/addressesSlice';
 
 export const store = configureStore({
 	reducer: {
-		mapComponent: mapComponentReducer
+		mapComponent: mapComponentReducer,
+		requests: requestsReducer,
+		addresses: destinationsSlice,
 	},
 });
