@@ -15,8 +15,6 @@ const MapComponent = () => {
 		routeWhileDragging: true
 	}));
 
-	console.log(location)
-
 	const startPointLat = (location?.startPoint.length > 0) ? location.startPoint[0] : startLat;
 	const startPointLon = (location?.startPoint.length > 0) ? location.startPoint[1] : startLon;
 
@@ -24,29 +22,27 @@ const MapComponent = () => {
 	const destinationPointLon = (location?.destinationPoint.length > 0) ? location.destinationPoint[1] : startLon;
 
 	const zoomLat = (startPointLat + destinationPointLat) / 2;
-	const zoomLng = (startPointLon + destinationPointLon) / 2;
+	const zoomLon = (startPointLon + destinationPointLon) / 2;
 
-	const coords = [zoomLat, zoomLng];
+	const coordinates = [zoomLat, zoomLon];
 
-	console.log(coords)
-
-	function SetZoom({ coords }) {
+	function SetZoom({ coordinates }) {
 		const map = useMap();
 
-		map.setView(coords, map.getZoom());
+		map.setView(coordinates, map.getZoom());
 
 		if (location.startPoint.length > 0 && location.destinationPoint.length > 0) {
 			control.current
 				.setWaypoints([L.latLng(startPointLat, startPointLon),
-					L.latLng(destinationPointLat, destinationPointLon)])
+				L.latLng(destinationPointLat, destinationPointLon)])
 				.addTo(map);
 		}
 
 		return null;
 	}
-	
+
 	return (
-		<MapContainer center={coords} zoom={8} scrollWheelZoom={true}>
+		<MapContainer center={coordinates} zoom = {5} scrollWheelZoom = {true} >
 			<TileLayer
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -54,9 +50,9 @@ const MapComponent = () => {
 
 			<Marker position={[startPointLat, startPointLon]} />
 			<Marker position={[destinationPointLat, destinationPointLon]} />
-			<SetZoom coords={coords} />
+			<SetZoom coordinates={coordinates} />
 
-		</MapContainer>
+		</MapContainer >
 	);
 }
 

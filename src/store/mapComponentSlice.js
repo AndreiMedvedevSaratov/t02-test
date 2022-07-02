@@ -11,6 +11,7 @@ export const mapComponentReducer = createSlice({
 
 	reducers: {
 		changeInAddress: (state, action) => {
+
 			if (action.payload.startPoint) {
 				state.startPoint = action.payload.startPoint;
 			}
